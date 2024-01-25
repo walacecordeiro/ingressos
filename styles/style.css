@@ -16,19 +16,19 @@ body {
 
 header {
   width: 1100px;
-  margin: 2rem auto;
+  margin: 4rem auto;
 }
 
 header .logo {
-  width: 196.8px;
+  width: 20rem;
 }
 
 main.container {
   width: 1100px;
   height: auto;
-  border: 2px solid #00f4bf;
-  margin: 0 auto 60px;
-  padding: 4.5rem 6.38rem;
+  border: 0.2rem solid #00f4bf;
+  margin: 0 auto 6rem;
+  padding: 4rem 6rem;
   background-image: url("../assets/PNG/Imagem\ com\ borda.png");
   background-size: cover;
   position: relative;
@@ -36,8 +36,8 @@ main.container {
 
 main.container .grafismo {
   background: url("../assets/SVG/Grafismo\ verde.svg");
-  width: 31.9375rem;
-  height: 2.0625rem;
+  width: 50rem;
+  height: 3rem;
   position: absolute;
   top: -19px;
   left: -2px;
@@ -45,27 +45,27 @@ main.container .grafismo {
 
 main.container .estado {
   display: flex;
-  gap: 2rem;
   position: absolute;
-  top: -85px;
-  right: 0;
+  top: -5rem;
+  right: 5rem;
 }
 
 form.panel {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  gap: 2rem;
+  gap: 1.5rem;
   margin: 2.5rem 0;
-  animation: fade .2s ease-in-out;
+  animation: fade 0.2s ease-in-out;
 }
 
 form.panel h2 {
   font-family: "Chakra Petch", sans-serif;
-  font-size: 5rem;
+  font-size: 7rem;
   line-height: 110%;
   width: 100%;
 }
+
 form.panel h2 span,
 .fa-pen-to-square {
   color: #1875e8;
@@ -75,26 +75,26 @@ form .input-group {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: .5rem;
 
   font-family: "Inter", sans-serif;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 form .input-group select,
 form .input-group input {
   background: none;
   color: white;
-  border: 1px solid #00f4bf;
+  border: .1rem solid #00f4bf;
   border-radius: 0.5rem;
-  height: 3.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 16px;
+  height: 4rem;
+  padding: 1rem;
+  font-size: 1.6rem;
 }
 
 form .input-group select {
-  width: 24.75rem;
+  width: 30rem;
   appearance: none;
   background: url("../assets/PNG/Arrow\ down.png") no-repeat right 1rem top 50%;
   color: black;
@@ -102,19 +102,19 @@ form .input-group select {
 }
 
 form .input-group input#qtdComprar {
-  width: 60px;
+  width: 4rem;
 }
 
 form button,
 .estado button {
   color: white;
-  font-size: 16px;
-  height: 3.5rem;
+  font-size: 1.6rem;
+  width: fit-content;
+  height: max-content;
   border: none;
   background-color: #1875e8;
-  padding: 1rem 1.5rem;
+  padding: 1rem 5rem;
   border-radius: 1rem;
-  width: fit-content;
   box-shadow: 0px 0px 20px 0px rgba(24, 117, 232, 0.5);
   cursor: pointer;
   transition: 0.1s;
@@ -122,7 +122,7 @@ form button,
 
 form button:hover,
 .estado button:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 .blockBtn {
@@ -132,7 +132,7 @@ form button:hover,
 }
 
 img.hachuras {
-  max-width: 900px;
+  max-width: max-content;
   margin: 4rem 0;
 }
 
@@ -141,15 +141,15 @@ img.hachuras {
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
-  margin-bottom: 40px;
-  animation: fade .2s ease-in-out;
+  margin-bottom: 4rem;
+  animation: fade 0.2s ease-in-out;
 
   #ticket {
-    width: 200px;
+    width: 15rem;
   }
 
   > h2 {
-    font-size: 2rem;
+    font-size: 4rem;
     align-self: start;
   }
 
@@ -159,7 +159,7 @@ img.hachuras {
     align-items: flex-end;
     gap: 1rem;
 
-    font-size: 16px;
+    font-size: 1.6rem;
     font-family: "Inter", sans-serif;
     font-weight: 400;
   }
@@ -167,7 +167,7 @@ img.hachuras {
   > ul li span {
     color: #00f4bf;
     font-style: italic;
-    font-size: 16px;
+    font-size: 1.6rem;
     padding-left: 1.5rem;
   }
 }
@@ -178,14 +178,14 @@ img.hachuras {
   justify-content: flex-start;
 
   > h2 {
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
   }
 
   > ul {
     flex-direction: column;
     align-items: start;
     gap: 1rem;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-family: "Inter", sans-serif;
     font-weight: 400;
     width: 100%;
@@ -197,8 +197,8 @@ img.hachuras {
     justify-content: space-between;
 
     width: 100%;
-    border: 1px solid #00f4bf;
-    border-radius: 0.5rem;
+    border: .1rem solid #00f4bf;
+    border-radius: .5rem;
     padding: 1rem;
     gap: 2rem;
   }
@@ -223,9 +223,9 @@ img.hachuras {
   }
 
   > ul i {
-    font-size: inherit;
+    font-size: 2.2rem;
     cursor: pointer;
-    transition: .1s;
+    transition: 0.1s;
   }
 
   > ul i:hover {
