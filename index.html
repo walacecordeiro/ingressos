@@ -16,34 +16,51 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./styles/_reset.css" />
+    <link rel="stylesheet" href="./styles/global.css" />
     <link rel="stylesheet" href="./styles/style.css" />
     <script src="js/app.js" defer type="module"></script>
     <title>e-Ticket</title>
   </head>
 
   <body>
+    <div class="modalAdminEdit hide">
+      <div class="modal-content">
+        <i class="modalClose fa-solid fa-xmark"></i>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium,
+          minima deserunt magni nesciunt atque consectetur maiores eveniet
+          dolore omnis commodi id dignissimos reprehenderit eaque ipsa
+          voluptatum ducimus quibusdam. Omnis, odit?
+        </p>
+      </div>
+    </div>
+
     <header>
       <img class="logo" src="./assets/SVG/Logo.svg" alt="Logo" />
     </header>
+
     <main class="container">
       <div class="grafismo"></div>
       <div class="estado">
-        <button class="hide" type="button">Ver painel do usuário</button>
-        <button class="" type="button">Ver painel do admin</button>
+        <button id="userPanel" class="btnPrimary hide" type="button">
+          Ver painel do usuário
+        </button>
+        <button id="adminPanel" class="btnPrimary" type="button">
+          Ver painel do admin
+        </button>
       </div>
       <form class="panel">
         <h2>Compre seu <span>ingresso</span></h2>
         <label class="input-group">
-          Escolha o tipo
+          <p>Escolha o tipo</p>
           <select name="tipo-ingresso" id="select">
             <option>Pista</option>
             <option>Cadeira Superior</option>
             <option>Cadeira Inferior</option>
           </select>
         </label>
-        <label class="input-group"
-          >Qtde.
+        <label class="input-group">
+          <p>Qtde.</p>
           <input
             type="number"
             id="qtdComprar"
@@ -52,7 +69,12 @@
             max="10"
           />
         </label>
-        <button class="blockBtn" type="button" id="btnComprar" disabled>
+        <button
+          class="btnPrimary blockBtn"
+          type="button"
+          id="btnComprar"
+          disabled
+        >
           Comprar
         </button>
       </form>
@@ -72,7 +94,7 @@
             placeholder="Quantidade disponível"
           />
         </label>
-        <button class="blockBtn" type="button" id="btnAdd">
+        <button class="btnPrimary blockBtn" type="button" id="btnAdd" disabled>
           Adicionar Ingresso
         </button>
       </form>
@@ -95,8 +117,8 @@
           <li>
             Tipo:<span>Pista</span>Qantidade:<span>100</span>
             <div class="icons">
-              <i class="fa-solid fa-pen-to-square"></i>
-              <i class="fa-solid fa-trash"></i>
+              <i class="edit fa-solid fa-pen-to-square"></i>
+              <i class="delete fa-solid fa-trash"></i>
             </div>
           </li>
           <li>

@@ -1,11 +1,17 @@
+:root {
+  font-size: 62.5%;
+  --primary-color: #4694a6;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  font-size: 62.5%;
+p, ul, select {
+  font-size: 1.6rem;
+  font-family: "Inter", sans-serif;
 }
 
 h1,
