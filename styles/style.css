@@ -80,7 +80,8 @@ form .input-group {
 }
 
 form .input-group select,
-form .input-group input {
+form .input-group input,
+.modal-content input {
   background: none;
   color: white;
   background-color: rgba(0, 0, 0, 0.5);
@@ -256,10 +257,16 @@ body.modal-block-body {
 
 .modal-content {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   padding: 5rem;
+  width: 100%;
   max-width: 90%;
   color: black;
-  background-color: #fefefe;
+  background-color: white;
+  border-radius: .5rem;
   margin: 0 auto;
 
   .fa-xmark {
@@ -271,6 +278,12 @@ body.modal-block-body {
     animation: pulse 1s ease-in-out infinite;
     cursor: pointer;
   }
+}
+
+.modal-content input {
+  width: 40rem;
+  background-color: initial;
+  color: black;
 }
 
 @keyframes pulse {

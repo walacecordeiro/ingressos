@@ -1,4 +1,4 @@
-export function lockUnlockBtn(input1, input2, btn) {
+function lockUnlockBtn(input1, input2, btn) {
   if (input1.value !== "" && input2.value > 0) {
     btn.classList.remove("blockBtn");
     btn.disabled = false;
@@ -8,7 +8,7 @@ export function lockUnlockBtn(input1, input2, btn) {
   }
 }
 
-export function toggle(alvo) {
+function toggle(alvo) {
   if (alvo instanceof NodeList) {
     for (let i = 0; i < alvo.length; i++) {
       alvo[i].classList.toggle("hide");
@@ -16,6 +16,15 @@ export function toggle(alvo) {
     return;
   }
   alvo.classList.toggle("hide");
+}
+
+function modalClose(modalAdminEdit) {
+  modalAdminEdit.classList.add("fade-out");
+  setTimeout(() => {
+    toggle(modalAdminEdit);
+    modalAdminEdit.classList.remove("fade-out");
+    document.body.classList.remove("modal-block-body");
+  }, 200);
 }
 
 export function handleEvents(
@@ -69,16 +78,21 @@ export function handleEvents(
       toggle(modalAdminEdit);
       document.body.classList.add("modal-block-body");
       break;
+    case "updateIngresso":
+    case "updateQtd":
+      target.addEventListener("input", () => {
+        lockUnlockBtn(updateIngresso, updateQtd, btnUpdate);
+      });
+      break;
+    case "btnUpdate":
+      modalClose(modalAdminEdit);
+      console.log("Atualizado com sucesso");
+      break;
     case "delete":
       console.log("Deletar");
       break;
     case "modalClose":
-      modalAdminEdit.classList.add("fade-out");
-      setTimeout(() => {
-        toggle(modalAdminEdit);
-        modalAdminEdit.classList.remove("fade-out");
-        document.body.classList.remove("modal-block-body");
-      }, 200);
+      modalClose(modalAdminEdit);
       break;
   }
 }
