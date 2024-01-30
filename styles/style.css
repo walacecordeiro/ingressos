@@ -236,7 +236,7 @@ img.hachuras {
   display: none !important;
 }
 
-.modalAdminEdit {
+.modal {
   display: flex;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
@@ -266,7 +266,7 @@ body.modal-block-body {
   max-width: 90%;
   color: black;
   background-color: white;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   margin: 0 auto;
 
   .fa-xmark {
