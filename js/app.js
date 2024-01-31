@@ -11,10 +11,10 @@ const modal = document.querySelector(".modal");
 //Inputs
 const userPanel = document.querySelector("#userPanel");
 const adminPanel = document.querySelector("#adminPanel");
-const qtdComprar = document.querySelector("#qtdComprar");
-const btnComprar = document.querySelector("#btnComprar");
+const qttDemanded = document.querySelector("#qttDemanded");
+const btnPurchase = document.querySelector("#btnPurchase");
 const newTicket = document.querySelector("#newTicket");
-const qtdAdd = document.querySelector("#qtdAdd");
+const qttNewTicket = document.querySelector("#qttNewTicket");
 const select = document.querySelector("#select");
 const option = document.querySelector("#select").children;
 
@@ -34,10 +34,10 @@ document.addEventListener("click", (e) => {
     modal,
     userPanel,
     adminPanel,
-    qtdComprar,
-    btnComprar,
+    qttDemanded,
+    btnPurchase,
     newTicket,
-    qtdAdd,
+    qttNewTicket,
     select,
     option,
     userHTML,

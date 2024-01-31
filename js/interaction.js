@@ -2,7 +2,7 @@ import { Tickets } from "./businessRules.js";
 const tickets = new Tickets();
 
 function lockUnlockBtn(input1, input2, btn) {
-  if (input1.value !== "" && input2.value > 0) {
+  if (input1.value !== "" && input2.value > 0 && input2.value !== "") {
     btn.classList.remove("blockBtn");
     btn.disabled = false;
   } else {
@@ -51,7 +51,7 @@ export function initialContent({ select, userHTML, adminHTML, list }) {
       <span>${(spanList.textContent = tickets.list[i].amount)}</span>`;
 
     adminHTML.children[i].innerHTML = `
-      Tipo:<span>${list[i].type}</span>Qantidade:<span>${tickets.list[i].amount}</span>
+      Tipo:<span>${list[i].type}</span>Quantidade:<span>${tickets.list[i].amount}</span>
       <div class="icons">
         <i class="edit fa-solid fa-pen-to-square"></i>
         <i class="delete fa-solid fa-trash"></i>
@@ -64,18 +64,50 @@ function updateContent(list) {
   const userHTML = document.querySelector("#userHTML");
   const spanList = document.getElementsByTagName("span");
   const adminHTML = document.querySelector("#adminHTML");
+  const select = document.querySelector("#select");
 
   for (let i = 0; i < list.length; i++) {
+    select.children[i].innerHTML = `${list[i].type}`;
+
     userHTML.children[i].innerHTML = ` ${list[i].type}
   <span>${(spanList.textContent = list[i].amount)}</span>`;
 
     adminHTML.children[i].innerHTML = `
-  Tipo:<span>${list[i].type}</span>Qantidade:<span>${list[i].amount}</span>
+  Tipo:<span>${list[i].type}</span>Quantidade:<span>${list[i].amount}</span>
   <div class="icons">
   <i class="edit fa-solid fa-pen-to-square"></i>
   <i class="delete fa-solid fa-trash"></i>
   </div>
   `;
+  }
+}
+
+function addContent(
+  newTicket,
+  qttNewTicket,
+  select,
+  options,
+  userHTML,
+  adminHTML
+) {
+  if (tickets.list.length > options.length) {
+    const novoOption = document.createElement("option");
+    novoOption.textContent = newTicket;
+    select.appendChild(novoOption);
+
+    const newLi = document.createElement("li");
+    newLi.innerHTML = `${newTicket}<span>${qttNewTicket}</span>`;
+    userHTML.appendChild(newLi);
+
+    const newLiAdmin = document.createElement("li");
+    newLiAdmin.innerHTML = `
+    Tipo:<span>${newTicket}</span>Quantidade:<span>${qttNewTicket}</span>
+    <div class="icons">
+      <i class="edit fa-solid fa-pen-to-square"></i>
+      <i class="delete fa-solid fa-trash"></i>
+    </div>
+  `;
+    adminHTML.appendChild(newLiAdmin);
   }
 }
 
@@ -87,13 +119,14 @@ export function handleEvents(
     modal,
     userPanel,
     adminPanel,
-    qtdComprar,
-    btnComprar,
+    qttDemanded,
+    btnPurchase,
     newTicket,
-    qtdAdd,
+    qttNewTicket,
     select,
     option,
     userHTML,
+    adminHTML,
   }
 ) {
   const target = e.target;
@@ -107,31 +140,28 @@ export function handleEvents(
       toggle(forms);
       toggle(sections);
       break;
-    case "select":
-      tickets.selectedOption = e.target.value;
-      break;
-    case "qtdComprar":
+    case "qttDemanded":
       target.addEventListener("input", () => {
-        tickets.qttDemanded = parseInt(e.target.value);
-        lockUnlockBtn("", qtdComprar, btnComprar);
+        lockUnlockBtn("", qttDemanded, btnPurchase);
       });
       break;
-    case "btnComprar":
-      tickets.purchase();
+    case "btnPurchase":
+      tickets.purchase(select.value, qttDemanded.value);
       updateContent(tickets.list);
       break;
 
     // Painel do admin
     case "newTicket":
-    case "qtdAdd":
+    case "qttNewTicket":
       target.addEventListener("input", () => {
-        lockUnlockBtn(newTicket, qtdAdd, btnAdd);
+        lockUnlockBtn(newTicket, qttNewTicket, btnAdd);
       });
       break;
     case "btnAdd":
-      tickets.addTicketToList(
-        newTicket,
-        qtdAdd,
+      tickets.addTicketToList(newTicket, qttNewTicket);
+      addContent(
+        newTicket.value,
+        qttNewTicket.value,
         select,
         option,
         userHTML,
@@ -139,18 +169,34 @@ export function handleEvents(
       );
       break;
     case "edit":
+      const parentEl = e.target.closest("li");
+      const firstSpan = parentEl.querySelector("span").textContent;
+      const oldTypeValue = (modal.querySelector("p").textContent = firstSpan);
+
+      console.log(oldTypeValue);
       toggle(modal);
       document.body.classList.add("modal-block-body");
       break;
-    case "updateIngresso":
-    case "updateQtd":
+    case "updateTicket":
+    case "updateQttTicket":
       target.addEventListener("input", () => {
-        lockUnlockBtn(updateIngresso, updateQtd, btnUpdate);
+        lockUnlockBtn(updateTicket, updateQttTicket, btnUpdateTicket);
       });
       break;
-    case "btnUpdate":
+    case "btnUpdateTicket":
+      const OldTicketType =
+        document.getElementById("OldTicketType").textContent;
+
+      tickets.updateTicket(
+        updateTicket.value,
+        updateQttTicket.value,
+        OldTicketType
+      );
+      updateTicket.value = "";
+      updateQttTicket.value = "";
+      lockUnlockBtn(updateTicket, updateQttTicket, btnUpdateTicket);
       modalClose(modal);
-      console.log("Atualizado com sucesso");
+      updateContent(tickets.list);
       break;
     case "delete":
       console.log("Deletar");

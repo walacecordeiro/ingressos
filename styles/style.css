@@ -259,7 +259,8 @@ body.modal-block-body {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  flex-wrap: nowrap;
   gap: 1rem;
   padding: 5rem;
   width: 100%;
@@ -277,6 +278,16 @@ body.modal-block-body {
     font-size: 2rem;
     animation: pulse 1s ease-in-out infinite;
     cursor: pointer;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+    p {
+      font-style: italic;
+    }
   }
 }
 

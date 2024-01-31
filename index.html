@@ -27,20 +27,22 @@
       <div class="modal-content">
         <i class="modalClose fa-solid fa-xmark"></i>
         <label class="input-group">
+          <p id="OldTicketType"></p>
           <input
             type="text"
-            placeholder="Novo nome para este tipo de ingresso"
-            id="updateIngresso"
+            placeholder="Novo nome para este ingresso"
+            id="updateTicket"
           />
         </label>
         <label class="input-group">
+          <p>Quantidade</p>
           <input
             type="number"
-            placeholder="Qual a quantidade atual disponível?"
-            id="updateQtd"
+            placeholder="Qual quantidade será disponibilizada?"
+            id="updateQttTicket"
           />
         </label>
-        <button class="btnPrimary blockBtn" type="button" id="btnUpdate" disabled>Atualizar</button>
+        <button class="btnPrimary blockBtn" type="button" id="btnUpdateTicket" disabled>Atualizar</button>
       </div>
     </div>
 
@@ -71,7 +73,7 @@
           <input
             class="inputPrimary"
             type="number"
-            id="qtdComprar"
+            id="qttDemanded"
             placeholder="00"
             min="1"
             max="10"
@@ -80,7 +82,7 @@
         <button
           class="btnPrimary blockBtn"
           type="button"
-          id="btnComprar"
+          id="btnPurchase"
           disabled
         >
           Comprar
@@ -97,7 +99,7 @@
         </label>
         <label class="input-group">
           <input
-            id="qtdAdd"
+            id="qttNewTicket"
             type="number"
             placeholder="Quantidade disponível"
           />

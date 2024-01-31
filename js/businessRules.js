@@ -9,7 +9,10 @@ export class Tickets {
     this.qttDemanded = 0;
   }
 
-  purchase() {
+  purchase(type, amount) {
+    this.selectedOption = type;
+    this.qttDemanded = amount;
+
     const selectedOption = this.list.find(
       (ingresso) => ingresso.type === this.selectedOption
     );
@@ -27,7 +30,7 @@ export class Tickets {
         alert(
           `Você deseja comprar ${
             this.qttDemanded
-          } tickets para ${selectedOption.type.toLocaleLowerCase()} mas temos apenas ${
+          } ingressos para ${selectedOption.type.toLocaleLowerCase()} mas temos apenas ${
             selectedOption.amount
           } ${selectedOptionSP}`
         );
@@ -40,37 +43,32 @@ export class Tickets {
     }
   }
 
-  addTicketToList(
-    type,
-    amount,
-    select,
-    options,
-    userHTML,
-    adminHTML
-  ) {
+  addTicketToList(type, amount) {
+    this.selectedOption = type;
+    this.qttDemanded = amount;
+
     this.list.push({
-      type: type.value,
+      type: type.value.trim(),
       amount: parseInt(amount.value),
     });
+  }
 
-    if (this.list.length > options.length) {
-      const novoOption = document.createElement("option");
-      novoOption.textContent = type.value;
-      select.appendChild(novoOption);
+  updateTicket(valueType, valueAmount, OldTicketType) {
+    this.selectedOption = valueType.trim();
+    this.qttDemanded = parseInt(valueAmount);
 
-      const novoLi = document.createElement("li");
-      novoLi.innerHTML = `${type.value}<span>${amount.value}</span>`;
-      userHTML.appendChild(novoLi);
 
-      const novoLiAdmin = document.createElement("li");
-      novoLiAdmin.innerHTML = `
-      Tipo:<span>${type.value}</span>Qantidade:<span>${amount.value}</span>
-      <div class="icons">
-        <i class="edit fa-solid fa-pen-to-square"></i>
-        <i class="delete fa-solid fa-trash"></i>
-      </div>
-    `;
-      adminHTML.appendChild(novoLiAdmin);
+    const existingTicketIndex = this.list.findIndex(
+      (ticket) => ticket.type === OldTicketType
+    );
+
+    console.log(existingTicketIndex)
+
+    if (existingTicketIndex !== -1) {
+      this.list[existingTicketIndex].type = this.selectedOption;
+      this.list[existingTicketIndex].amount = this.qttDemanded;
     }
+
+    console.log(this.list);
   }
 }
