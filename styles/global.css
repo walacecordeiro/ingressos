@@ -1,13 +1,15 @@
-:root {
-  font-size: 62.5%;
-  --primary-color: #4694a6;
-}
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+
+:root {
+  font-size: 62.5%;
+  --primary-color: #4694a6;
+}
+
 
 p,
 ul,
