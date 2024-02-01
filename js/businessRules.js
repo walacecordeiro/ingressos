@@ -39,7 +39,7 @@ export class Tickets {
         alert("Compra realizada com sucesso!");
       }
     } else {
-      console.log("Adicione uma quantidade ao pedido");
+      alert("Adicione uma quantidade ao pedido");
     }
   }
 
@@ -78,7 +78,6 @@ export class Tickets {
 
     if (existingTicketIndex !== -1) {
       this.list.splice(existingTicketIndex, 1)
-      console.log(this.list);
     }
 
   }

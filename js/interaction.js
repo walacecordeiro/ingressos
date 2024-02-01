@@ -154,6 +154,14 @@ export function handleEvents(
       target.addEventListener("input", () => {
         lockUnlockBtn("", qttDemanded, btnPurchase);
       });
+
+      target.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          tickets.purchase(select.value, qttDemanded.value);
+          updateContent(tickets.list);
+        }
+      });
       break;
     case "btnPurchase":
       tickets.purchase(select.value, qttDemanded.value);
