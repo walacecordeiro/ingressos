@@ -158,8 +158,6 @@ export function handleEvents(
       target.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           e.preventDefault();
-          tickets.purchase(select.value, qttDemanded.value);
-          updateContent(tickets.list);
         }
       });
       break;
