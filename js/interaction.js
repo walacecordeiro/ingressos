@@ -111,6 +111,16 @@ function addContent(
   }
 }
 
+function deleteContent(targetElement, ticketType, select, options, userHTML) {
+  for (const i in options) {
+    if (options[i].innerHTML === ticketType) {
+      select.removeChild(options[i]);
+      userHTML.removeChild(userHTML.children[i]);
+      targetElement.remove(targetElement);
+    }
+  }
+}
+
 export function handleEvents(
   e,
   {
@@ -172,8 +182,7 @@ export function handleEvents(
       const parentEl = e.target.closest("li");
       const firstSpan = parentEl.querySelector("span").textContent;
       const oldTypeValue = (modal.querySelector("p").textContent = firstSpan);
-
-      console.log(oldTypeValue);
+      updateTicket.value = oldTypeValue;
       toggle(modal);
       document.body.classList.add("modal-block-body");
       break;
@@ -192,14 +201,18 @@ export function handleEvents(
         updateQttTicket.value,
         OldTicketType
       );
-      updateTicket.value = "";
       updateQttTicket.value = "";
       lockUnlockBtn(updateTicket, updateQttTicket, btnUpdateTicket);
       modalClose(modal);
       updateContent(tickets.list);
       break;
     case "delete":
-      console.log("Deletar");
+      const targetElement = e.target.closest("li");
+      const ticketType = targetElement.querySelector("span").textContent;
+
+      deleteContent(targetElement, ticketType, select, option, userHTML);
+
+      tickets.deleteTicket(ticketType);
       break;
     case "modalClose":
       modalClose(modal);

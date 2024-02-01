@@ -57,12 +57,11 @@ export class Tickets {
     this.selectedOption = valueType.trim();
     this.qttDemanded = parseInt(valueAmount);
 
-
     const existingTicketIndex = this.list.findIndex(
       (ticket) => ticket.type === OldTicketType
     );
 
-    console.log(existingTicketIndex)
+    console.log(existingTicketIndex);
 
     if (existingTicketIndex !== -1) {
       this.list[existingTicketIndex].type = this.selectedOption;
@@ -70,5 +69,17 @@ export class Tickets {
     }
 
     console.log(this.list);
+  }
+
+  deleteTicket(ticketType) {
+    const existingTicketIndex = this.list.findIndex(
+      (ticket) => ticket.type === ticketType
+    );
+
+    if (existingTicketIndex !== -1) {
+      this.list.splice(existingTicketIndex, 1)
+      console.log(this.list);
+    }
+
   }
 }

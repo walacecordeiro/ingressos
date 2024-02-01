@@ -28,6 +28,7 @@ const list = tickets.list;
 initialContent({ select, userHTML, adminHTML, list });
 
 document.addEventListener("click", (e) => {
+  e.preventDefault();
   handleEvents(e, {
     forms,
     sections,
